@@ -9,6 +9,7 @@
 #include "Particles.h"
 #include "Model.h"
 #include "Transform.h"
+#include "Actor.h"
 
 #include <SDL.h>
 #include <fmod.hpp>
