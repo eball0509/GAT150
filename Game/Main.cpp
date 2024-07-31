@@ -1,23 +1,35 @@
 #include "Engine.h"
-#include "Scene.h"
+#include "..//Engine/Source/Framework/Scene.h"
 
 #include <iostream>
 #include <cstdlib>
 #include <vector>
+#include <cassert>
 
 
 int main(int argc, char* argv[])
+
 {
-	g_engine.Initialize();
+	std::unique_ptr<Engine> engine = std::make_unique<Engine>();
+	engine->Initialize();
 
-	while (!g_engine.IsQuit())
+#ifdef _DEBUG
+	std::cout << "debug\n";
+#endif
+
+
+
+	while (!engine->IsQuit())
 	{
-		g_engine.Update();
+		engine->Update();
 
-		g_engine.GetRenderer().SetColor(255, 255, 255, 0);
-		g_engine.GetRenderer().BeginFrame();
+		engine->GetRenderer().SetColor(255, 255, 255, 0);
+		engine->GetRenderer().BeginFrame();
 
-		g_engine.GetRenderer().EndFrame();
+		engine->GetRenderer().EndFrame();
+
 	}
+	engine->Shutdown();
+
 	return 0;
 }

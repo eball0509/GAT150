@@ -1,19 +1,20 @@
 #pragma once
-#include "Renderer.h"
-#include "Input.h"
-#include "Audio.h"
-#include "ETime.h"
-#include "Vector2.h"
-#include "Random.h"
-#include "MathUtils.h"
-#include "Particles.h"
-#include "Model.h"
-#include "Transform.h"
-#include "Actor.h"
+#include "../Source/Renderer/Renderer.h"
+#include "../Source/Input/Input.h"
+#include "../Source/Audio/Audio.h"
+#include "../Source/Core/ETime.h"
+#include "../Source/Math/Vector2.h"
+#include "../Source/Math/Random.h"
+#include "../Source/Math/MathUtils.h"
+#include "../Source/Renderer/Particles.h"
+#include "../Source/Renderer/Model.h"
+#include "../Source/Math/Transform.h"
+#include "../Source/Framework/Actor.h"
+#include "../Source/Renderer/ParticleSystem.h"
 
 #include <SDL.h>
 #include <fmod.hpp>
-#include "ParticleSystem.h"
+
 
 class Engine
 {
@@ -44,6 +45,3 @@ private:
 	std::unique_ptr<Audio> m_audio;
 
 };
-
-
-extern Engine g_engine;

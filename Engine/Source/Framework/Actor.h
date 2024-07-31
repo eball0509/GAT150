@@ -1,7 +1,7 @@
 #pragma once
-#include "Transform.h"
-#include "Model.h"
-#include "Scene.h"
+#include "..//Math/Transform.h"
+#include "..//Renderer/Model.h"
+#include "..//Framework/Scene.h"
 
 #include <string>
 
