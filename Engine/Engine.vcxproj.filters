@@ -65,6 +65,12 @@
     <ClCompile Include="Source\Engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EFile.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="EAssert.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Audio\Audio.h">
@@ -117,6 +123,12 @@
     </ClInclude>
     <ClInclude Include="Source\Renderer\Text.h">
       <Filter>Source Files\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="EAssert.h">
+      <Filter>Source Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="EFile.h">
+      <Filter>Source Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="Source\Engine.h">
       <Filter>Source Files</Filter>

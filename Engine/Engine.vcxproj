@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="EAssert.cpp" />
+    <ClCompile Include="EFile.cpp" />
     <ClCompile Include="Source\Audio\Audio.cpp" />
     <ClCompile Include="Source\Core\ETime.cpp" />
     <ClCompile Include="Source\Engine.cpp" />
@@ -33,6 +35,8 @@
     <ClCompile Include="Source\Renderer\Text.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EAssert.h" />
+    <ClInclude Include="EFile.h" />
     <ClInclude Include="Source\Audio\Audio.h" />
     <ClInclude Include="Source\Core\ETime.h" />
     <ClInclude Include="Source\Engine.h" />
