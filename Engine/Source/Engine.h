@@ -12,6 +12,9 @@
 #include "../Source/Framework/Actor.h"
 #include "../Source/Renderer/ParticleSystem.h"
 
+#include "Resource/Resource.h"
+#include "Resource/ResourceManager.h"
+
 #include <SDL.h>
 #include <fmod.hpp>
 
