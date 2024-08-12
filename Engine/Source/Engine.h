@@ -1,19 +1,19 @@
 #pragma once
-#include "../Source/Renderer/Renderer.h"
-#include "../Source/Input/Input.h"
-#include "../Source/Audio/Audio.h"
-#include "../Source/Core/ETime.h"
-#include "../Source/Math/Vector2.h"
-#include "../Source/Math/Random.h"
-#include "../Source/Math/MathUtils.h"
-#include "../Source/Renderer/Particles.h"
-#include "../Source/Renderer/Model.h"
-#include "../Source/Math/Transform.h"
-#include "../Source/Framework/Actor.h"
-#include "../Source/Renderer/ParticleSystem.h"
-
+#include "Renderer/Renderer.h"
+#include "Input/Input.h"
+#include "Audio/Audio.h"
+#include "Core/ETime.h"
+#include "Math/Vector2.h"
+#include "Math/Random.h"
+#include "Math/MathUtils.h"
+#include "Renderer/Particles.h"
+#include "Renderer/Model.h"
+#include "Math/Transform.h"
+#include "Framework/Actor.h"
+#include "Renderer/ParticleSystem.h"
 #include "Resource/Resource.h"
 #include "Resource/ResourceManager.h"
+#include "Components/TextureComponent.h"
 
 #include <SDL.h>
 #include <fmod.hpp>
