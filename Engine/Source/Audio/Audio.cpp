@@ -1,5 +1,5 @@
 #include "Audio.h"
-using namespace std;
+#include <iostream>
 
 bool Audio::Initialize()
 {
@@ -7,7 +7,7 @@ bool Audio::Initialize()
 	void* extradriverdata = nullptr;
 	m_audio->init(32, FMOD_INIT_NORMAL, extradriverdata);
 
-    return true;
+	return false;
 }
 
 void Audio::Shutdown()
@@ -25,7 +25,10 @@ bool Audio::AddSound(const std::string& name)
 	FMOD::Sound* sound = nullptr;
 	m_audio->createSound(name.c_str(), FMOD_DEFAULT, 0, &sound);
 
-	//if (sound == nullptr)std::cerr << "Could not load sound : " << name << std::endl; return false;
+	if (sound == nullptr)
+	{
+		std::cerr << "Could not load sound : " << name << std::endl; return false;
+	}
 
 	m_sounds[name] = sound;
 	return true;

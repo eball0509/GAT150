@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 #include "Vector2.h"
 #include "MathUtils.h"
 #include <random>

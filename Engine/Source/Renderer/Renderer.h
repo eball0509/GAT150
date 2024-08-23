@@ -1,12 +1,11 @@
 #pragma once
 #include <SDL.h>
-#include <string>
 #include <SDL_ttf.h>
 #include <SDL_image.h>
-#include "Texture.h"
+#include <string>
+#include <memory>
 
-
-	class Texture;
+class Texture;
 
 class Renderer
 {
@@ -21,6 +20,7 @@ public:
 	void EndFrame();
 
 	void SetColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
+
 	void DrawLine(int x1, int y1, int x2, int y2);
 	void DrawLine(float x1, float y1, float x2, float y2);
 	void DrawPoint(int x, int y);
@@ -32,10 +32,11 @@ public:
 	int GetHeight() const { return m_height; }
 
 	friend class Text;
+
 	friend class Texture;
 
-	void DrawTexture(Texture* texture, float x, float y, float angle = 0.0f);
-
+	void DrawTexture(std::weak_ptr<class Texture> texture, float x, float y, float angle = 0.0f);
+	void DrawTexture(std::weak_ptr<class Texture> texture, const struct Transform& transform, bool hflip = false);
 
 private:
 	SDL_Window* m_window{ nullptr };

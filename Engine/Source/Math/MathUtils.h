@@ -31,13 +31,6 @@ namespace Math
 	}
 
 
-	/// <summary>
-	/// Returns the maximum value of a and b.
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="a">value</param>
-	/// <param name="b">value</param>
-	/// <returns>The maximum value between a and b</returns>
 	template<typename T>
 	T Max(T a, T b) { return (a > b) ? a : b; }
 
