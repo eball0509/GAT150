@@ -1,11 +1,11 @@
 #pragma once
-#include "Particles.h"
+#include "Particle.h"
 #include <vector>
 
 class ParticleSystem
 {
 public:
-	ParticleSystem(int maxSize = 10000)
+	ParticleSystem(int maxSize = 500)
 	{
 		m_particles.resize(maxSize);
 	}

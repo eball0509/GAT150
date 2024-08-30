@@ -1,15 +1,23 @@
-#include "CharacterComponent.h"
+	#include "CharacterComponent.h"
 #include "Engine.h"
+#include <string>
+#include <Components/CircleCollisionComponent.h>
 
 FACTORY_REGISTER(CharacterComponent)
 
 void CharacterComponent::Initialize()
 {
 	owner->OnCollisionEnter = std::bind(&CharacterComponent::OnCollisionEnter, this, std::placeholders::_1);
+
+	physics = owner->GetComponent<PhysicsComponent>();
+	animation = owner->GetComponent<TextureAnimationComponent>();
+
+	scoreText = owner->GetComponent<TextComponent>();
 }
 
 void CharacterComponent::Update(float dt)
 {
+	bool groundCount = 1;
 	Vector2 direction = { 0,0 };
 
 	//left movement
@@ -18,20 +26,29 @@ void CharacterComponent::Update(float dt)
 	//right movement
 	if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_D)
 		|| owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_RIGHT)) direction.x = 1;
+	if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_SPACE)
+		&& !owner->scene->engine->GetInput().GetPrevKeyDown(SDL_SCANCODE_SPACE)) physics->SetVelocity(Vector2{ 0,-150 });
 
+	physics->ApplyForce(direction * speed);
 
-	owner->GetComponent<PhysicsComponent>()->ApplyForce(direction * speed);
+	/*if (owner->transform.position.x < 0 || owner->transform.position.x > 800 || owner->transform.position.y < 0 || owner->transform.position.x > 600) {
+		owner->scene->GetGame()->EndGame();
+	}*/
 
-	if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_SPACE)) {
-		owner->GetComponent<PhysicsComponent>()->SetVelocity(Vector2{ 0,-500 });
+}
+
+void CharacterComponent::OnCollisionEnter(Actor* actor)
+{
+	std::cout << "collision" << std::endl;
+	if (actor->tag == "enemy") {
+		owner->destroyed = true;
+		owner->isActive = false;
 	}
 }
 
-void CharacterComponent::OnCollisionEnter(Actor*)
+void CharacterComponent::OnCollisionExit(Actor* actor)
 {
-	EVENT_NOTIFY("PlayerDead")
-	EVENT_NOTIFY_DATA("AddPoints", 100)
-	//std::cout << "Player Hit\n";
+
 }
 
 void CharacterComponent::Read(const json_t& value)

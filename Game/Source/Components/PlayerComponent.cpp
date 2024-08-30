@@ -1,27 +1,43 @@
 #include "PlayerComponent.h"
 #include "Engine.h"
+
+FACTORY_REGISTER(PlayerComponent)
+
 void PlayerComponent::Initialize()
 {
+	owner->OnCollisionEnter = std::bind(&PlayerComponent::OnCollisionEnter, this, std::placeholders::_1);
 }
 
 void PlayerComponent::Update(float dt)
 {
-	Vector2 direction = Vector2{ 1,0 }.Rotate(Math::DegToRad(owner->transform.rotation));
 
 	float rotate = 0;
 	float thrust = 0;
-	if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_W)) rotate = -1;
-	if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_A)) rotate = 1;
-	if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_S)) thrust = 1;
-	if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_D)) thrust = -1;
 
-	owner->GetComponent<PhysicsComponent>()->ApplyForce(direction * speed);
+	//left movement
+	if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_A)
+		|| owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_LEFT)) rotate = -1;
+	//right movement
+	if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_D)
+		|| owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_RIGHT)) rotate = 1;
+	//up movement
+	if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_W)
+		|| owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_UP)) thrust = 1;
+	//down movement
+	if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_S)
+		|| owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_DOWN)) thrust = -1;
+
+	owner->GetComponent<PhysicsComponent>()->ApplyTorque(rotate * 90 * dt);
+	Vector2 direction = Vector2{ 0,-1 }.Rotate(Math::DegToRad(owner->transform.rotation));
+	owner->GetComponent<PhysicsComponent>()->ApplyForce(direction * speed * thrust);
 
 }
 
-std::unique_ptr<Object> PlayerComponent::Clone()
+void PlayerComponent::OnCollisionEnter(Actor*)
 {
-	return std::unique_ptr<Object>();
+	EVENT_NOTIFY("PlayerDead")
+	EVENT_NOTIFY_DATA("AddPoints", 100)
+		//std::cout << "Player Hit\n";
 }
 
 void PlayerComponent::Read(const json_t& value)
@@ -31,4 +47,5 @@ void PlayerComponent::Read(const json_t& value)
 
 void PlayerComponent::Write(json_t& value)
 {
+	//
 }

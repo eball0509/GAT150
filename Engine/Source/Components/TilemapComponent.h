@@ -1,9 +1,8 @@
 #pragma once
-#include "Component.h"
+#include "component.h"
 #include <vector>
 
-class TilemapComponent : public Component
-{
+class TilemapComponent : public Component {
 public:
 	TilemapComponent() = default;
 
@@ -12,12 +11,11 @@ public:
 
 	void Initialize() override;
 	void Update(float dt) override;
-	
 public:
-	int numColumns;
-	int numRows;
-	Vector2 tileSize{ 0, 0 };
+	int numColumns = 0;
+	int numRows = 0;
+	Vector2 tileSize{ 0,0 };
+
 	std::vector<std::string> tileNames;
 	std::vector<int> tiles;
-
 };

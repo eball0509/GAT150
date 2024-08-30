@@ -1,6 +1,7 @@
 #include "Box2DPhysicsComponent.h"
 #include "Engine.h"
 
+
 FACTORY_REGISTER(Box2DPhysicsComponent)
 
 Box2DPhysicsComponent::Box2DPhysicsComponent(const Box2DPhysicsComponent& other)
@@ -27,6 +28,7 @@ void Box2DPhysicsComponent::Update(float dt)
 	owner->transform.position = m_rigidBody->GetPosition();
 	owner->transform.rotation = m_rigidBody->GetAngle();
 	velocity = m_rigidBody->GetVelocity();
+	
 }
 
 void Box2DPhysicsComponent::ApplyForce(const Vector2& force)
@@ -48,6 +50,8 @@ void Box2DPhysicsComponent::SetVelocity(const Vector2& velocity)
 {
 	m_rigidBody->SetVelocity(velocity);
 }
+
+
 
 void Box2DPhysicsComponent::Write(json_t& value)
 {

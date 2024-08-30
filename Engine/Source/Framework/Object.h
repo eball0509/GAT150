@@ -20,13 +20,13 @@
 #define CLASS_PROTOTYPE(classname)						\
 	virtual std::unique_ptr<Object> Clone()				\
 	{	return std::make_unique<classname>(*this);}		\
+	
 
-
-class Object : public Serializable {
+class Object : public Serializable{
 public:
 
 	Object() = default;
-	Object(const std::string& name) : name{ name } {}
+	Object(const std::string& name) : name{name} {}
 	virtual ~Object() = default;
 
 	virtual std::unique_ptr<Object> Clone() = 0;
@@ -40,5 +40,6 @@ public:
 public:
 
 	std::string name;
-	bool isActive{ true };
+	bool isActive{true};
+	bool persistent{ false };
 };

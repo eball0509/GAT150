@@ -1,8 +1,7 @@
 #pragma once
 #include "RenderComponent.h"
 #include "Renderer/Texture.h"
-class TextureComponent : public RenderComponent 
-{
+class TextureComponent : public RenderComponent {
 public:
 
 	CLASS_DECLARATION(TextureComponent)
@@ -16,10 +15,8 @@ public:
 	void Draw(Renderer& renderer) override;
 
 public:
-
 	std::string textureName;
 	Rect source;
 	res_t<Texture> texture;
 	bool hflip = false;
-
 };

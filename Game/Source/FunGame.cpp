@@ -7,7 +7,7 @@ bool FunGame::Initialize()
 {
 
     m_scene = std::make_unique<Scene>(m_engine);
-    std::string scenenames[] = { "Scenes/scene.json", "Scenes/game.json"};
+    std::string scenenames[] = { "Scenes/scene.json", "Scenes/game.json", "Scenes/tilemap.json"};
     for (auto sceneName : scenenames) {
         rapidjson::Document doc;
         Json::Load(sceneName, doc);
@@ -46,5 +46,9 @@ void FunGame::OnPlayerDead(const Event& event)
 }
 
 void FunGame::OnAddPoints(const Event& event)
+{
+}
+
+void FunGame::EndGame()
 {
 }

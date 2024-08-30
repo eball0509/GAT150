@@ -8,7 +8,7 @@ class Event {
 public:
 	using data_t = std::variant<int, bool, float, std::string>;
 
-	Event(const id_t& id, data_t data) : id{ id }, data{ data } {}
+	Event(const id_t& id, data_t data) : id{ id }, data{data} {}
 
 	id_t id;
 	data_t data;

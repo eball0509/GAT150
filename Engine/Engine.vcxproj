@@ -19,42 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Audio\Audio.cpp" />
-    <ClCompile Include="Source\Audio\AudioClip.cpp" />
-    <ClCompile Include="Source\Audio\AudioSource.cpp" />
-    <ClCompile Include="Source\Components\AudioComponent.cpp" />
-    <ClCompile Include="Source\Components\Box2DPhysicsComponent.cpp" />
-    <ClCompile Include="Source\Components\CircleCollisionComponent.cpp" />
-    <ClCompile Include="Source\Components\EnginePhysicsComponent.cpp" />
-    <ClCompile Include="Source\Components\PhysicsComponent.cpp" />
-    <ClCompile Include="Source\Components\TextComponent.cpp" />
-    <ClCompile Include="Source\Components\TextureAnimationComponent.cpp" />
-    <ClCompile Include="Source\Components\TextureComponent.cpp" />
-    <ClCompile Include="Source\Components\TilemapComponent.cpp" />
-    <ClCompile Include="Source\Core\EAssert.cpp" />
-    <ClCompile Include="Source\Core\EFile.cpp" />
-    <ClCompile Include="Source\Core\EString.cpp" />
-    <ClCompile Include="Source\Core\ETime.cpp" />
-    <ClCompile Include="Source\Core\Json.cpp" />
-    <ClCompile Include="Source\Engine.cpp" />
-    <ClCompile Include="Source\Event\EventSystem.cpp" />
-    <ClCompile Include="Source\Event\Observer.cpp" />
-    <ClCompile Include="Source\Framework\Actor.cpp" />
-    <ClCompile Include="Source\Framework\Object.cpp" />
-    <ClCompile Include="Source\Framework\Scene.cpp" />
-    <ClCompile Include="Source\Input\Input.cpp" />
-    <ClCompile Include="Source\Math\Transform.cpp" />
-    <ClCompile Include="Source\Physics\Physics.cpp" />
-    <ClCompile Include="Source\Physics\RigidBody.cpp" />
-    <ClCompile Include="Source\Renderer\Font.cpp" />
-    <ClCompile Include="Source\Renderer\Model.cpp" />
-    <ClCompile Include="Source\Renderer\Particles.cpp" />
-    <ClCompile Include="Source\Renderer\ParticleSystem.cpp" />
-    <ClCompile Include="Source\Renderer\Renderer.cpp" />
-    <ClCompile Include="Source\Renderer\Text.cpp" />
-    <ClCompile Include="Source\Renderer\Texture.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Source\Audio\Audio.h" />
     <ClInclude Include="Source\Audio\AudioClip.h" />
     <ClInclude Include="Source\Audio\AudioSource.h" />
@@ -72,8 +36,8 @@
     <ClInclude Include="Source\Components\TilemapComponent.h" />
     <ClInclude Include="Source\Core\EAssert.h" />
     <ClInclude Include="Source\Core\EFile.h" />
-    <ClInclude Include="Source\Core\Estring.h" />
-    <ClInclude Include="Source\Core\ETime.h" />
+    <ClInclude Include="Source\Core\EString.h" />
+    <ClInclude Include="Source\Core\ETimer.h" />
     <ClInclude Include="Source\Core\Factory.h" />
     <ClInclude Include="Source\Core\Json.h" />
     <ClInclude Include="Source\Core\Serializable.h" />
@@ -97,18 +61,57 @@
     <ClInclude Include="Source\Renderer\Color.h" />
     <ClInclude Include="Source\Renderer\Font.h" />
     <ClInclude Include="Source\Renderer\Model.h" />
-    <ClInclude Include="Source\Renderer\Particles.h" />
+    <ClInclude Include="Source\Renderer\Particle.h" />
     <ClInclude Include="Source\Renderer\ParticleSystem.h" />
     <ClInclude Include="Source\Renderer\Renderer.h" />
     <ClInclude Include="Source\Renderer\Text.h" />
     <ClInclude Include="Source\Renderer\Texture.h" />
-    <ClInclude Include="Source\Resource\Resource.h" />
-    <ClInclude Include="Source\Resource\ResourceManager.h" />
+    <ClInclude Include="Source\Resources\Resource.h" />
+    <ClInclude Include="Source\Resources\ResourceManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Audio\Audio.cpp" />
+    <ClCompile Include="Source\Audio\AudioClip.cpp" />
+    <ClCompile Include="Source\Audio\AudioSource.cpp" />
+    <ClCompile Include="Source\Components\AudioComponent.cpp" />
+    <ClCompile Include="Source\Components\Box2DPhysicsComponent.cpp" />
+    <ClCompile Include="Source\Components\CircleCollisionComponent.cpp" />
+    <ClCompile Include="Source\Components\EnginePhysicsComponent.cpp" />
+    <ClCompile Include="Source\Components\PhysicsComponent.cpp" />
+    <ClCompile Include="Source\Components\TextComponent.cpp" />
+    <ClCompile Include="Source\Components\TextureAnimationComponent.cpp" />
+    <ClCompile Include="Source\Components\TextureComponent.cpp" />
+    <ClCompile Include="Source\Components\TilemapComponent.cpp" />
+    <ClCompile Include="Source\Core\EAssert.cpp" />
+    <ClCompile Include="Source\Core\EFile.cpp" />
+    <ClCompile Include="Source\Core\EString.cpp" />
+    <ClCompile Include="Source\Core\ETimer.cpp" />
+    <ClCompile Include="Source\Core\Json.cpp" />
+    <ClCompile Include="Source\Engine.cpp" />
+    <ClCompile Include="Source\Event\EventSystem.cpp" />
+    <ClCompile Include="Source\Event\Observer.cpp" />
+    <ClCompile Include="Source\Framework\Actor.cpp" />
+    <ClCompile Include="Source\Framework\Object.cpp" />
+    <ClCompile Include="Source\Framework\Scene.cpp" />
+    <ClCompile Include="Source\Input\Input.cpp" />
+    <ClCompile Include="Source\Math\Transform.cpp" />
+    <ClCompile Include="Source\Physics\Physics.cpp" />
+    <ClCompile Include="Source\Physics\RigidBody.cpp" />
+    <ClCompile Include="Source\Renderer\Font.cpp" />
+    <ClCompile Include="Source\Renderer\Model.cpp" />
+    <ClCompile Include="Source\Renderer\Particle.cpp" />
+    <ClCompile Include="Source\Renderer\ParticleSystem.cpp" />
+    <ClCompile Include="Source\Renderer\Renderer.cpp" />
+    <ClCompile Include="Source\Renderer\Text.cpp" />
+    <ClCompile Include="Source\Renderer\Texture.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{df5a8629-b6cd-4211-ac40-5d56d6692d15}</ProjectGuid>
+    <ProjectGuid>{5c4e60ac-5740-42e1-bdcf-b47649b1b028}</ProjectGuid>
     <RootNamespace>Engine</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -157,20 +160,44 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)Bin\$(ProjectName)\$(TargetPlatform)$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(TargetPlatform)$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)Bin\$(ProjectName)\$(TargetPlatform)$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(TargetPlatform)$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)Bin\$(ProjectName)\$(TargetPlatform)$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(TargetPlatform)$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)Bin\$(ProjectName)\$(TargetPlatform)$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(TargetPlatform)$(Configuration)\</IntDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\SDL2\include;$(SolutionDir)ThirdParty\fmod\core\inc;$(SolutionDir)ThirdParty\SDL2\lib;$(ProjectDir)Source;$(SolutionDir)Thirdparty\rapidjson\include;$(SolutionDir)ThirdParty\box2d\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>
       </SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\fmod\core\lib\$(PlatformTarget)</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -180,8 +207,10 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\SDL2\include;$(SolutionDir)ThirdParty\fmod\core\inc;$(SolutionDir)ThirdParty\SDL2\lib;$(ProjectDir)Source;$(SolutionDir)Thirdparty\rapidjson\include;$(SolutionDir)ThirdParty\box2d\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -190,6 +219,12 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\fmod\core\lib\$(PlatformTarget)</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -199,7 +234,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\SDL2\include;$(SolutionDir)ThirdParty\fmod\core\inc;$(ProjectDir)Source;$(SolutionDir)ThirdParty\rapidjson\include;$(SolutionDir)ThirdParty\box2d\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\SDL2\include;$(SolutionDir)ThirdParty\fmod\core\inc;$(SolutionDir)ThirdParty\SDL2\lib;$(ProjectDir)Source;$(SolutionDir)Thirdparty\rapidjson\include;$(SolutionDir)ThirdParty\box2d\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -208,8 +243,10 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\fmod\core\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\fmod\core\lib\$(PlatformTarget)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -220,8 +257,10 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\SDL2\include;$(SolutionDir)ThirdParty\fmod\core\inc;$(SolutionDir)ThirdParty\SDL2\lib;$(ProjectDir)Source;$(SolutionDir)Thirdparty\rapidjson\include;$(SolutionDir)ThirdParty\box2d\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -230,6 +269,12 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\fmod\core\lib\$(PlatformTarget)</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

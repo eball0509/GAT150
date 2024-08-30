@@ -5,7 +5,6 @@
 class RigidBody
 {
 public:
-
 	enum Shape {
 		BOX,
 		CAPSULE,
@@ -32,7 +31,6 @@ public:
 	};
 
 public:
-
 	RigidBody(const Transform& transform, const Vector2& size, const def_t& def, const class Physics& physics);
 	~RigidBody();
 
@@ -49,6 +47,5 @@ public:
 	void SetAngularVelocity(float velocity);
 
 private:
-
 	b2BodyId m_bodyId{ b2_nullBodyId };
 };

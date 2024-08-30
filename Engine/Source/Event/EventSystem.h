@@ -16,7 +16,7 @@ class Observer;
 class EventSystem : public Singleton<EventSystem> {
 public:
 	using EventHandler = std::function<void(const Event&)>;
-
+	
 	struct Dispatcher {
 		Observer* observer{ nullptr };
 		EventHandler* eHandler{ nullptr };

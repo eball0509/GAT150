@@ -29,5 +29,4 @@ public:
 private:
 	std::unique_ptr<Text> m_text;
 	bool textChanged = true;
-
 };

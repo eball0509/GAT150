@@ -1,7 +1,7 @@
 #include "TextureAnimationComponent.h"
 #include "Renderer/Renderer.h"
 #include "Framework/Actor.h"
-#include "Resource/ResourceManager.h"
+#include "Resources/ResourceManager.h"
 #include "Engine.h"
 
 FACTORY_REGISTER(TextureAnimationComponent)

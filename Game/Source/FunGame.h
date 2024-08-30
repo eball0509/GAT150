@@ -21,4 +21,7 @@ public:
 
 private:
 	std::unique_ptr<class Scene> m_scene;
+
+	// Inherited via Game
+	void EndGame() override;
 };

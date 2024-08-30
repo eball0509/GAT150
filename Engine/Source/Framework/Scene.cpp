@@ -13,6 +13,7 @@ void Scene::Initialize()
 	}
 }
 
+
 void Scene::Update(float dt)
 {
 	//update
@@ -21,10 +22,10 @@ void Scene::Update(float dt)
 			actor->Update(dt);
 		}
 	}
-
+	
 	//destroy
-	std::_Erase_remove_if(actors, [](auto& actor) { return actor->destroyed; });
-
+	std::erase_if(actors, [](auto& actor) { return actor->destroyed; });
+	
 	//collision
 	//for (auto& actor1 : actors) {
 	//	CollisionComponent* collision1 = actor1->GetComponent<CollisionComponent>();
@@ -64,14 +65,18 @@ void Scene::AddActor(std::unique_ptr<Actor> actor, bool initialize)
 	actors.push_back(std::move(actor));
 }
 
-void Scene::RemoveAll()
+void Scene::RemoveAll(bool force)
 {
-	actors.clear();
+	std::erase_if(actors, [](auto& actor) { return actor->persistent; });
+
+	if (force) {
+		actors.clear();
+	}
 }
 
 void Scene::Read(const json_t& value)
 {
-	if (HAS_DATA(value, actors) && GET_DATA(value, actors).IsArray()) {
+	if (HAS_DATA(value, actors) && GET_DATA(value,actors).IsArray()) {
 		for (auto& actorValue : GET_DATA(value, actors).GetArray()) {
 			auto actor = Factory::Instance().Create<Actor>(Actor::GetTypeName());
 			actor->Read(actorValue);
@@ -83,7 +88,7 @@ void Scene::Read(const json_t& value)
 			}
 			else {
 
-				AddActor(move(actor));
+			AddActor(move(actor));
 			}
 		}
 	}
@@ -93,3 +98,9 @@ void Scene::Write(json_t& value)
 {
 	//
 }
+
+void Scene::SetGame(Game* newGame)
+{
+	game = newGame;
+}
+

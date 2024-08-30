@@ -1,19 +1,18 @@
 #pragma once
 // ** core **
-#include "Core/ETime.h"
+#include "Core/ETimer.h"
 #include "Core/EAssert.h"
 #include "Core/EFile.h"
 #include "Core/EString.h"
 #include "Core/Json.h"
 #include "Core/Factory.h"
 #include "Core/Singleton.h"
-#include "Core/Serializable.h"
 
 // ** systems **
 
 //renderer
 #include "Renderer/Renderer.h"
-#include "Renderer/Particles.h"
+#include "Renderer/Particle.h"
 #include "Renderer/ParticleSystem.h"
 #include "Renderer/Text.h"
 #include "Renderer/Font.h"
@@ -40,8 +39,8 @@
 #include "Framework/Game.h"
 
 // ** Resources **
-#include "Resource/Resource.h"
-#include "Resource/ResourceManager.h"
+#include "Resources/Resource.h"
+#include "Resources/ResourceManager.h"
 
 // ** Event **
 #include "Event/EventSystem.h"
@@ -51,8 +50,10 @@
 
 // ** components **
 #include "Components/TextureComponent.h"
+#include "Components/TextureAnimationComponent.h"
 #include "Components/EnginePhysicsComponent.h"
 #include "Components/TextComponent.h"
+#include "Components/AudioComponent.h"
 
 //external libraries
 #include <iostream>
@@ -70,7 +71,7 @@ public:
 	void Shutdown();
 
 	void Update();
-	bool IsQuit() { return quit; }
+	bool IsQuit();
 
 	Time& GetTime() { return *m_time; }
 	Renderer& GetRenderer() { return *m_renderer; }
@@ -78,7 +79,6 @@ public:
 	Audio& GetAudio() { return *m_audio; }
 	ParticleSystem& GetPS() { return *m_ps; }
 	Physics& GetPhysics() { return *m_physics; }
-
 
 private:
 
@@ -91,3 +91,4 @@ private:
 
 	bool quit = false;
 };
+

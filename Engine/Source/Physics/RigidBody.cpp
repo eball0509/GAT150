@@ -31,7 +31,7 @@ RigidBody::RigidBody(const Transform& transform, const Vector2& size, const def_
 	{
 		//b2Polygon box = b2MakeBox(hsize.x, hsize.y);
 		//b2CreatePolygonShape(m_bodyId, &shapeDef, &box);
-
+	
 		b2Vec2 vs[4] =
 		{
 			{ -hsize.x, -hsize.y },
@@ -45,7 +45,7 @@ RigidBody::RigidBody(const Transform& transform, const Vector2& size, const def_
 		chainDef.isLoop = true;
 		b2CreateChain(m_bodyId, &chainDef);
 	}
-	break;
+		break;
 
 	case Shape::CAPSULE:
 	{
@@ -59,7 +59,7 @@ RigidBody::RigidBody(const Transform& transform, const Vector2& size, const def_
 		b2Circle circle{ b2Vec2{0,0},hsize.x };
 		b2CreateCircleShape(m_bodyId, &shapeDef, &circle);
 	}
-	break;
+		break;
 
 	default:
 		break;

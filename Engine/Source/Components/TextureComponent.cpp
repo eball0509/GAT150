@@ -2,15 +2,15 @@
 #include "Renderer/Renderer.h"
 #include "Framework/Actor.h"
 #include "Engine.h"
-#include "Resource/ResourceManager.h"
+#include "Resources/ResourceManager.h"
 
 FACTORY_REGISTER(TextureComponent)
 
 void TextureComponent::Initialize()
 {
 	if (!textureName.empty()) {
-
-		texture = ResourceManager::Instance().Get<Texture>(textureName, owner->scene->engine->GetRenderer());
+		
+		texture = ResourceManager::Instance().Get<Texture>(textureName,owner->scene->engine->GetRenderer());
 	}
 
 	if (texture && source.w == 0 && source.h == 0) {
@@ -29,12 +29,12 @@ void TextureComponent::Update(float dt)
 void TextureComponent::Draw(Renderer& renderer)
 {
 	Transform transform = owner->transform;
-	renderer.DrawTexture(texture, transform, source, hflip);
+	renderer.DrawTexture(texture, transform, source,hflip);
 }
 
 void TextureComponent::Read(const json_t& value)
 {
-	READ_DATA_REQUIRED(value, textureName);
+	READ_DATA(value, textureName);
 	READ_DATA(value, source);
 }
 

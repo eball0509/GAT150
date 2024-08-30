@@ -21,15 +21,16 @@ public:
 	void Update(float dt);
 	void Draw(Renderer& renderer);
 
-	void AddActor(std::unique_ptr<Actor> actor, bool initialize = false);
-	void RemoveAll();
+	void AddActor(std::unique_ptr<Actor> actor,bool initialize = false);
+	void RemoveAll(bool force = false);
 
 	template<typename T> T* GetActor();
 	template<typename T> T* GetActor(const std::string& name);
-
+	
 	void Initialize() override;
 
-	Game* GetGame() { return game; };
+	Game* GetGame() { return game;};
+	void SetGame(Game* game);
 public:
 	Engine* engine{ nullptr };
 	Game* game{ nullptr };
@@ -40,7 +41,7 @@ protected:
 
 template<typename T>
 T* Scene::GetActor() {
-
+	
 	for (auto& actor : actors) {
 		T* result = dynamic_cast<T*>(actor.get());
 		if (result) return result;

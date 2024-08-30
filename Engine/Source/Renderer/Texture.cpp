@@ -1,18 +1,23 @@
 #include "Texture.h"
-#include "Core/EAssert.h"
+#include "../Engine.h"
+#include "../Math/Vector2.h"
+#include "../Core/EAssert.h"
+#include <SDL_image.h>
+#include <SDL.h>
 #include <iostream>
+#include <cassert>
 
 Texture::~Texture()
 {
     // if texture exists, destroy texture
-    if (!nullptr) SDL_DestroyTexture(m_texture);
+    if (m_texture) SDL_DestroyTexture(m_texture);
 }
 
 bool Texture::Load(const std::string& filename, Renderer& renderer)
 {
     // load image onto surface
     SDL_Surface* surface = IMG_Load(filename.c_str());
-    if (!surface)
+    if (surface == nullptr)
     {
         std::cerr << "Could not load image: " << filename << std::endl;
         return false;
@@ -22,7 +27,7 @@ bool Texture::Load(const std::string& filename, Renderer& renderer)
     m_texture = SDL_CreateTextureFromSurface(renderer.m_renderer, surface);
     // once texture is created, surface can be freed up
     SDL_FreeSurface(surface);
-    if (!m_texture)
+    if (m_texture == nullptr)
     {
         std::cerr << "Could not create texture: " << filename << std::endl;
         return false;
@@ -38,17 +43,17 @@ Vector2 Texture::GetSize()
     // query the texture for the size
     // https://wiki.libsdl.org/SDL2/SDL_QueryTexture
     SDL_Point size;
-    SDL_QueryTexture(m_texture, NULL, NULL, &size.x, &size.y);
+    SDL_QueryTexture(m_texture, NULL, NULL,&size.x,&size.y);
 
-    return { size.x, size.y };
+    return Vector2{size.x,size.y};
 }
 
-bool Texture::Create(std::string filename, ...)
+bool Texture::Create(std::string name, ...)
 {
     va_list args;
-    va_start(args, filename);
+    va_start(args, name);
     Renderer& renderer = va_arg(args, Renderer);
     va_end(args);
 
-    return Load(filename, renderer);
+    return Load(name,renderer);
 }

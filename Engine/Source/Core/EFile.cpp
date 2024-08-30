@@ -2,51 +2,48 @@
 #include <iostream>
 #include <fstream>
 
-std::string File::GetFilePath()
+using namespace std;
+
+string File::GetFilePath()
 {
-    return std::filesystem::current_path().string();
+    return filesystem::current_path().string();
 }
 
-bool File::SetFilePath(const std::string& filepath)
+bool File::SetFilePath(const string& filepath)
 {
-    std::error_code ec;
-    std::filesystem::current_path(filepath, ec);
-
+    error_code ec;
+    filesystem::current_path(filepath,ec);
     return !ec;
 }
 
-bool File::FileExists(const std::string& filepath)
+bool File::FileExist(const std::string& filepath)
 {
-    return std::filesystem::exists(filepath);
+    return filesystem::exists(filepath);
 }
 
-bool File::GetFileSize(const std::string& filepath, int& size)
+bool File::GetFileSize(const std::string& filepath, int* size)
 {
-    //Really looking for a filepath, but they can take a string
-    std::filesystem::path path(filepath);
-
-    std::error_code ec;
-    size = (int)std::filesystem::file_size(path, ec);
-    return !ec;
+    error_code ec;
+     *size = (int)filesystem::file_size(filepath,ec);
+     return !ec;
 }
 
-bool File::ReadFile(const std::string filepath, std::string& buffer)
+bool File::readFile(const std::string& filepath, std::string& buffer)
 {
-    if (!FileExists(filepath))
-    {
-        std::cerr << "File does not exist: " << filepath << std::endl;
-        return false;
-    }
-    std::ifstream stream(filepath);
-
-    if (!stream.is_open())
-    {
-        std::cerr << "Could not open file: " << filepath << std::endl;
+    if (!FileExist(filepath)) {
+        cerr << "File does not exist: " << filepath << endl;
         return false;
     }
 
-    std::ostringstream ostream;
+    ifstream stream(filepath);
+    if (!stream.is_open()) {
+        cerr << "Could not open file: " << filepath << endl;
+        return false;
+    }
+
+    ostringstream ostream;
     ostream << stream.rdbuf();
+
     buffer = ostream.str();
 
     return true;

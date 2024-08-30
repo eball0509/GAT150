@@ -36,12 +36,14 @@ void Physics::UpdateCollision()
 		b2BodyId bodyIdA = b2Shape_GetBody(contactEvent->shapeIdA);
 		b2BodyId bodyIdB = b2Shape_GetBody(contactEvent->shapeIdB);
 
-		Actor* actorA = static_cast<Actor*>(b2Body_GetUserData(bodyIdA));
+		//checks if actor exists and is not destroyed
+		Actor* actorA = static_cast<Actor*>(b2Body_GetUserData(bodyIdA));		
 		if (!actorA || actorA->destroyed || !actorA->active) continue;
 
 		Actor* actorB = static_cast<Actor*>(b2Body_GetUserData(bodyIdB));
 		if (!actorB || actorB->destroyed || !actorB->active) continue;
 
+		//enter collision
 		if (actorA->OnCollisionEnter) actorA->OnCollisionEnter(actorB);
 		if (actorB->OnCollisionEnter) actorB->OnCollisionEnter(actorA);
 	}
@@ -60,6 +62,7 @@ void Physics::UpdateCollision()
 		Actor* actorB = static_cast<Actor*>(b2Body_GetUserData(bodyIdB));
 		if (!actorB || actorB->destroyed || !actorB->active) continue;
 
+		//leave collision
 		if (actorA->OnCollisionExit) actorA->OnCollisionExit(actorB);
 		if (actorB->OnCollisionExit) actorB->OnCollisionExit(actorA);
 	}
@@ -79,7 +82,7 @@ void Physics::UpdateCollision()
 		Actor* actorB = static_cast<Actor*>(b2Body_GetUserData(bodyIdB));
 		if (!actorB || actorB->destroyed || !actorB->active) continue;
 
-		if (actorA->OnCollisionExit) actorA->OnCollisionEnter(actorB);
-		if (actorB->OnCollisionExit) actorB->OnCollisionEnter(actorA);
+		if (actorA->OnCollisionEnter) actorA->OnCollisionEnter(actorB);
+		if (actorB->OnCollisionEnter) actorB->OnCollisionEnter(actorA);
 	}
 }
