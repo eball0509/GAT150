@@ -5,6 +5,12 @@
 class RigidBody
 {
 public:
+
+	enum Shape {
+		BOX,
+		CAPSULE,
+		CIRCLE
+	};
 	struct def_t
 	{
 		// body
@@ -15,15 +21,18 @@ public:
 		bool  isDynamic = true;
 
 		// shape
-		float friction = 0.0f;
+		float friction = 0.5f;
 		float restitution = 0.5f;
 		float density = 1.0f;
 		bool isSensor = false;
+
+		Shape shape = Shape::BOX;
 
 		class Actor* actor{ nullptr };
 	};
 
 public:
+
 	RigidBody(const Transform& transform, const Vector2& size, const def_t& def, const class Physics& physics);
 	~RigidBody();
 
@@ -40,5 +49,6 @@ public:
 	void SetAngularVelocity(float velocity);
 
 private:
+
 	b2BodyId m_bodyId{ b2_nullBodyId };
 };

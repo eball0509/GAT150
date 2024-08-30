@@ -1,26 +1,33 @@
 #pragma once
 #include "RenderComponent.h"
+#include <string>
 
-class TextComponent : public RenderComponent
-{
+class Text;
+
+class TextComponent : public RenderComponent {
 public:
+	TextComponent() = default;
+	TextComponent(const TextComponent& other);
 
-	CLASS_DECLARATION(TextComponent)
-		// Inherited via RenderComponent
 	void Initialize() override;
 
-	void Update(float dt) override;
+	CLASS_DECLARATION(TextComponent)
 
+	CLASS_PROTOTYPE(TextComponent)
+
+	void Update(float dt) override;
 	void Draw(Renderer& renderer) override;
+
 	void SetText(const std::string& text);
 
 public:
 	std::string text;
 	std::string fontName;
-	int fontSize = 8;
+	int fontSize = 12;
 	Color color{ 1,1,1,1 };
 
 private:
-	std::unique_ptr<class Text> m_text;
-	bool changed = true;
+	std::unique_ptr<Text> m_text;
+	bool textChanged = true;
+
 };

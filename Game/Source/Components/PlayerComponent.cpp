@@ -19,6 +19,11 @@ void PlayerComponent::Update(float dt)
 
 }
 
+std::unique_ptr<Object> PlayerComponent::Clone()
+{
+	return std::unique_ptr<Object>();
+}
+
 void PlayerComponent::Read(const json_t& value)
 {
 	READ_DATA(value, speed);

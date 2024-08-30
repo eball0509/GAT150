@@ -1,26 +1,34 @@
 #pragma once
 #include "Math/Transform.h"
+#include "Scene.h"
 #include "Components/Component.h"
 
-#include <memory>
 #include <string>
+#include <memory>
 #include <vector>
+#include <functional>
 
 class Renderer;
-class Scene;
-class Input;
 
-class Actor : public Object
-{
+class Actor : public Object {
 public:
 	Actor() = default;
 	Actor(const Transform& transform) : transform{ transform } {}
+	Actor(const Actor& other);
 
 	CLASS_DECLARATION(Actor)
 
-	void Initialize() override;
+	CLASS_PROTOTYPE(Actor)
+
+	friend class Scene;
+
+	void Initialize();
+
 	virtual void Update(float dt);
 	virtual void Draw(Renderer& renderer);
+
+	std::function<void(Actor*)> OnCollisionEnter;
+	std::function<void(Actor*)> OnCollisionExit;
 
 	void AddComponent(std::unique_ptr<Component> component);
 
@@ -30,27 +38,24 @@ public:
 	template<typename T>
 	std::vector<T*> GetComponents();
 
-	void UpdateTransformToMouse(Input& input, Vector2 previousPosition);
+public:
 
-
-	friend class Scene;
 	std::string tag;
-	float lifespan = 0.0f;
+	float lifespan = 0;
 	bool destroyed = false;
 	Transform transform;
-
 	Scene* scene{ nullptr };
+	bool active = false;
 
 protected:
+
 	std::vector<std::unique_ptr<Component>> components;
 
 };
-
 template<typename T>
 inline T* Actor::GetComponent()
 {
-	for (auto& component : components)
-	{
+	for (auto& component : components) {
 		T* result = dynamic_cast<T*>(component.get());
 		if (result) return result;
 	}
@@ -58,14 +63,13 @@ inline T* Actor::GetComponent()
 }
 
 template<typename T>
-inline std::vector<T*> Actor::GetComponents()
-{
-	std::vector<T*> results;
-	for (auto& component : components)
-	{
-		T* result = dynamic_cast<T*>(component.get());
-		if (result) results.push_back(result);
-	}
+inline std::vector<T*> Actor::GetComponents() {
 
+	std::vector<T*> results;
+
+	for (auto& component : components) {
+		T* result = dynamic_cast<T*>(component.get());
+		if (results) results.pushBack(result);
+	}
 	return results;
 }

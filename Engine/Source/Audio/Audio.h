@@ -15,6 +15,10 @@ public:
 
 	bool AddSound(const std::string& name);
 	bool PlaySound(const std::string& name);
+	void StopSound();
+
+	friend class AudioClip;
+	friend class AudioSource;
 
 private:
 	FMOD::System* m_audio{ nullptr };

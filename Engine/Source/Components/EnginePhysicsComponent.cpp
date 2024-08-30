@@ -29,6 +29,10 @@ void EnginePhysicsComponent::SetPosition(const Vector2& position)
 }
 
 
+void EnginePhysicsComponent::ApplyTorque(float torque)
+{
+}
+
 void EnginePhysicsComponent::Read(const json_t& value)
 {
 	PhysicsComponent::Read(value);

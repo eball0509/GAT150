@@ -7,6 +7,7 @@
 class Box2DPhysicsComponent : public PhysicsComponent
 {
 public:
+
 	Box2DPhysicsComponent() = default;
 	Box2DPhysicsComponent(const Box2DPhysicsComponent& other);
 
@@ -23,9 +24,13 @@ public:
 	void SetVelocity(const Vector2& velocity) override;
 
 public:
+
 	RigidBody::def_t rigidBodyDef;
 	Vector2 size{ 0, 0 };
+	Vector2 scale{ 1, 1 };
 
 private:
+
 	std::unique_ptr<RigidBody> m_rigidBody;
+
 };
